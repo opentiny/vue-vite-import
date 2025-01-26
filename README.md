@@ -1,4 +1,4 @@
-# vite-plugin-babel-import
+# vite-plugin-import
 
 A TinyVue vite import plugin.
 
