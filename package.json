@@ -2,6 +2,7 @@
   "name": "@opentiny/vue-vite-import",
   "version": "1.3.0",
   "description": "A TinyVue vite import plugin",
+  "packageManager": "pnpm@9.14.2",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
