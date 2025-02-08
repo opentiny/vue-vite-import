@@ -16,10 +16,8 @@
   "scripts": {
     "dev": "tsc -w -p .",
     "build": "rimraf dist && tsup src/index.ts --dts --format cjs,esm",
-    "prepublishOnly": "npm run build"
-  },
-  "publishConfig": {
-    "access": "public"
+    "prepublishOnly": "npm run build",
+    "pub": "pnpm publish --no-git-checks --access=public"
   },
   "type": "module",
   "types": "dist/index.d.ts",
