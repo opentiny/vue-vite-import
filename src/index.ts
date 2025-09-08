@@ -64,15 +64,18 @@ export default function vitePluginBabelImport(plgOptions: PluginOptions | allOpt
       const isCheckMode = mode && /@opentiny\/vue-.+?\/lib\/index.js$/.test(id) && code.includes(`./${mode}`)
 
       // 不处理node_modules内的依赖
-      if (/\.(?:[jt]sx?|vue)$/.test(id) && !/(node_modules)/.test(id)) {
+      if (/\.(?:[jt]sx?|m[jt]s|[jt]s|vue)$/.test(id) && /['"]@opentiny\/vue['"]/.test(code) && !isCheckMode) {
+        const codeResult = transformCode(code, transformOptions(pluginOption))
         return {
-          code: transformCode(code, transformOptions(pluginOption)),
+          code: codeResult,
           map: null
         }
-      } else if (isCheckMode) {
-        const newCode = code.replace(/('|")\.\/(mobile|pc|mobile-first)(\.js)?('|")/g, `"./${mode}"`)
+      }
+
+      if (isCheckMode) {
+        const codeResult = code?.replace(/('|")\.\/(mobile|pc|mobile-first)(\.js)?('|")/g, `"./${mode}"`)
         return {
-          code: newCode,
+          code: codeResult,
           map: null
         }
       }
